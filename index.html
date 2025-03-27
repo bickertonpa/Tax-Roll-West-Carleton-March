@@ -37,6 +37,11 @@
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="data/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3.js"></script>
         <script>
+		// Define the helper function for currency formatting
+		function formatCurrency(value) {
+		  // Ensure the value is a number before formatting
+		  return Number(value).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+		}
         var highlightLayer;
         function highlightFeature(e) {
             highlightLayer = e.target;
@@ -141,449 +146,250 @@
                 mouseover: highlightFeature,
             });
             var popupContent = '<table>\
-                    <tr>\
-                        <th scope="row">fid</th>\
-                        <td class="visible-with-data" id="fid">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">PARAREA_M</th>\
-                        <td class="visible-with-data" id="PARAREA_M">' + (feature.properties['PARAREA_M'] !== null ? autolinker.link(String(feature.properties['PARAREA_M']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - - DH</th>\
-                        <td class="visible-with-data" id="2023 - - DH">' + (feature.properties['2023 - - DH'] !== null ? autolinker.link(String(feature.properties['2023 - - DH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF">' + (feature.properties['2023 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV">' + (feature.properties['2023 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY">' + (feature.properties['2023 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - SMALL BUSINESS - C8</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - SMALL BUSINESS - C8">' + (feature.properties['2023 - COMMERCIAL - SMALL BUSINESS - C8'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - SMALL BUSINESS - C8']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7">' + (feature.properties['2023 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - TAXABLE: EXCESS LAND - CU</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - TAXABLE: EXCESS LAND - CU">' + (feature.properties['2023 - COMMERCIAL - TAXABLE: EXCESS LAND - CU'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - TAXABLE: EXCESS LAND - CU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1">' + (feature.properties['2023 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - TAXABLE: FULL - CT</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - TAXABLE: FULL - CT">' + (feature.properties['2023 - COMMERCIAL - TAXABLE: FULL - CT'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - TAXABLE: FULL - CT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH">' + (feature.properties['2023 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - COMMERCIAL - TAXABLE: VACANT LAND - CX</th>\
-                        <td class="visible-with-data" id="2023 - COMMERCIAL - TAXABLE: VACANT LAND - CX">' + (feature.properties['2023 - COMMERCIAL - TAXABLE: VACANT LAND - CX'] !== null ? autolinker.link(String(feature.properties['2023 - COMMERCIAL - TAXABLE: VACANT LAND - CX']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - EXEMPT - E</th>\
-                        <td class="visible-with-data" id="2023 - EXEMPT - E">' + (feature.properties['2023 - EXEMPT - E'] !== null ? autolinker.link(String(feature.properties['2023 - EXEMPT - E']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - Education taxes</th>\
-                        <td class="visible-with-data" id="2023 - Education taxes">' + (feature.properties['2023 - Education taxes'] !== null ? autolinker.link(String(feature.properties['2023 - Education taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - FARM - TAXABLE: FULL - FT</th>\
-                        <td class="visible-with-data" id="2023 - FARM - TAXABLE: FULL - FT">' + (feature.properties['2023 - FARM - TAXABLE: FULL - FT'] !== null ? autolinker.link(String(feature.properties['2023 - FARM - TAXABLE: FULL - FT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - SMALL BUSINESS - I8</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - SMALL BUSINESS - I8">' + (feature.properties['2023 - INDUSTRIAL - SMALL BUSINESS - I8'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - SMALL BUSINESS - I8']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7">' + (feature.properties['2023 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0">' + (feature.properties['2023 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU">' + (feature.properties['2023 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK">' + (feature.properties['2023 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - I1</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - I1">' + (feature.properties['2023 - INDUSTRIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - I1'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - I1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - TAXABLE: FULL - IT</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - TAXABLE: FULL - IT">' + (feature.properties['2023 - INDUSTRIAL - TAXABLE: FULL - IT'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - TAXABLE: FULL - IT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH">' + (feature.properties['2023 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - INDUSTRIAL - TAXABLE: VACANT LAND - IX</th>\
-                        <td class="visible-with-data" id="2023 - INDUSTRIAL - TAXABLE: VACANT LAND - IX">' + (feature.properties['2023 - INDUSTRIAL - TAXABLE: VACANT LAND - IX'] !== null ? autolinker.link(String(feature.properties['2023 - INDUSTRIAL - TAXABLE: VACANT LAND - IX']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - LANDFILL - PAYMENT IN LIEU: FULL - HF</th>\
-                        <td class="visible-with-data" id="2023 - LANDFILL - PAYMENT IN LIEU: FULL - HF">' + (feature.properties['2023 - LANDFILL - PAYMENT IN LIEU: FULL - HF'] !== null ? autolinker.link(String(feature.properties['2023 - LANDFILL - PAYMENT IN LIEU: FULL - HF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - LANDFILL - TAXABLE: FULL - HT</th>\
-                        <td class="visible-with-data" id="2023 - LANDFILL - TAXABLE: FULL - HT">' + (feature.properties['2023 - LANDFILL - TAXABLE: FULL - HT'] !== null ? autolinker.link(String(feature.properties['2023 - LANDFILL - TAXABLE: FULL - HT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU</th>\
-                        <td class="visible-with-data" id="2023 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU">' + (feature.properties['2023 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU'] !== null ? autolinker.link(String(feature.properties['2023 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - LARGE INDUSTRIAL - TAXABLE: FULL - LT</th>\
-                        <td class="visible-with-data" id="2023 - LARGE INDUSTRIAL - TAXABLE: FULL - LT">' + (feature.properties['2023 - LARGE INDUSTRIAL - TAXABLE: FULL - LT'] !== null ? autolinker.link(String(feature.properties['2023 - LARGE INDUSTRIAL - TAXABLE: FULL - LT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - MANAGED FORESTS - TAXABLE: FULL - TT</th>\
-                        <td class="visible-with-data" id="2023 - MANAGED FORESTS - TAXABLE: FULL - TT">' + (feature.properties['2023 - MANAGED FORESTS - TAXABLE: FULL - TT'] !== null ? autolinker.link(String(feature.properties['2023 - MANAGED FORESTS - TAXABLE: FULL - TT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT</th>\
-                        <td class="visible-with-data" id="2023 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT">' + (feature.properties['2023 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT'] !== null ? autolinker.link(String(feature.properties['2023 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - Municipal taxes</th>\
-                        <td class="visible-with-data" id="2023 - Municipal taxes">' + (feature.properties['2023 - Municipal taxes'] !== null ? autolinker.link(String(feature.properties['2023 - Municipal taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT</th>\
-                        <td class="visible-with-data" id="2023 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT">' + (feature.properties['2023 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT'] !== null ? autolinker.link(String(feature.properties['2023 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF</th>\
-                        <td class="visible-with-data" id="2023 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF">' + (feature.properties['2023 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF'] !== null ? autolinker.link(String(feature.properties['2023 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU</th>\
-                        <td class="visible-with-data" id="2023 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU">' + (feature.properties['2023 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU'] !== null ? autolinker.link(String(feature.properties['2023 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - OFFICE BUILDING - TAXABLE: FULL - DT</th>\
-                        <td class="visible-with-data" id="2023 - OFFICE BUILDING - TAXABLE: FULL - DT">' + (feature.properties['2023 - OFFICE BUILDING - TAXABLE: FULL - DT'] !== null ? autolinker.link(String(feature.properties['2023 - OFFICE BUILDING - TAXABLE: FULL - DT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - Other taxes</th>\
-                        <td class="visible-with-data" id="2023 - Other taxes">' + (feature.properties['2023 - Other taxes'] !== null ? autolinker.link(String(feature.properties['2023 - Other taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - PARKING LOT - TAXABLE: FULL - GT</th>\
-                        <td class="visible-with-data" id="2023 - PARKING LOT - TAXABLE: FULL - GT">' + (feature.properties['2023 - PARKING LOT - TAXABLE: FULL - GT'] !== null ? autolinker.link(String(feature.properties['2023 - PARKING LOT - TAXABLE: FULL - GT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT</th>\
-                        <td class="visible-with-data" id="2023 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT">' + (feature.properties['2023 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT'] !== null ? autolinker.link(String(feature.properties['2023 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF</th>\
-                        <td class="visible-with-data" id="2023 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF">' + (feature.properties['2023 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF'] !== null ? autolinker.link(String(feature.properties['2023 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD</th>\
-                        <td class="visible-with-data" id="2023 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD">' + (feature.properties['2023 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD'] !== null ? autolinker.link(String(feature.properties['2023 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - RESIDENTIAL - TAXABLE: FULL - RT</th>\
-                        <td class="visible-with-data" id="2023 - RESIDENTIAL - TAXABLE: FULL - RT">' + (feature.properties['2023 - RESIDENTIAL - TAXABLE: FULL - RT'] !== null ? autolinker.link(String(feature.properties['2023 - RESIDENTIAL - TAXABLE: FULL - RT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU</th>\
-                        <td class="visible-with-data" id="2023 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU">' + (feature.properties['2023 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU'] !== null ? autolinker.link(String(feature.properties['2023 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - SHOPPING CENTRE - TAXABLE: FULL - ST</th>\
-                        <td class="visible-with-data" id="2023 - SHOPPING CENTRE - TAXABLE: FULL - ST">' + (feature.properties['2023 - SHOPPING CENTRE - TAXABLE: FULL - ST'] !== null ? autolinker.link(String(feature.properties['2023 - SHOPPING CENTRE - TAXABLE: FULL - ST']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - Solid waste fees</th>\
-                        <td class="visible-with-data" id="2023 - Solid waste fees">' + (feature.properties['2023 - Solid waste fees'] !== null ? autolinker.link(String(feature.properties['2023 - Solid waste fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - Stormwater fees</th>\
-                        <td class="visible-with-data" id="2023 - Stormwater fees">' + (feature.properties['2023 - Stormwater fees'] !== null ? autolinker.link(String(feature.properties['2023 - Stormwater fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - Total assessed value</th>\
-                        <td class="visible-with-data" id="2023 - Total assessed value">' + (feature.properties['2023 - Total assessed value'] !== null ? autolinker.link(String(feature.properties['2023 - Total assessed value']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2023 - Total taxes levied</th>\
-                        <td class="visible-with-data" id="2023 - Total taxes levied">' + (feature.properties['2023 - Total taxes levied'] !== null ? autolinker.link(String(feature.properties['2023 - Total taxes levied']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - - C0</th>\
-                        <td class="visible-with-data" id="2024 - - C0">' + (feature.properties['2024 - - C0'] !== null ? autolinker.link(String(feature.properties['2024 - - C0']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - - DH</th>\
-                        <td class="visible-with-data" id="2024 - - DH">' + (feature.properties['2024 - - DH'] !== null ? autolinker.link(String(feature.properties['2024 - - DH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF">' + (feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV">' + (feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY">' + (feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - SMALL BUSINESS - C8</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - SMALL BUSINESS - C8">' + (feature.properties['2024 - COMMERCIAL - SMALL BUSINESS - C8'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - SMALL BUSINESS - C8']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7">' + (feature.properties['2024 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - TAXABLE: EXCESS LAND - CU</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: EXCESS LAND - CU">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: EXCESS LAND - CU'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - TAXABLE: EXCESS LAND - CU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - TAXABLE: FULL - CT</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: FULL - CT">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: FULL - CT'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - TAXABLE: FULL - CT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - COMMERCIAL - TAXABLE: VACANT LAND - CX</th>\
-                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: VACANT LAND - CX">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: VACANT LAND - CX'] !== null ? autolinker.link(String(feature.properties['2024 - COMMERCIAL - TAXABLE: VACANT LAND - CX']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - EXEMPT - E</th>\
-                        <td class="visible-with-data" id="2024 - EXEMPT - E">' + (feature.properties['2024 - EXEMPT - E'] !== null ? autolinker.link(String(feature.properties['2024 - EXEMPT - E']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - Education taxes</th>\
-                        <td class="visible-with-data" id="2024 - Education taxes">' + (feature.properties['2024 - Education taxes'] !== null ? autolinker.link(String(feature.properties['2024 - Education taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - FARM - TAXABLE: FULL - FT</th>\
-                        <td class="visible-with-data" id="2024 - FARM - TAXABLE: FULL - FT">' + (feature.properties['2024 - FARM - TAXABLE: FULL - FT'] !== null ? autolinker.link(String(feature.properties['2024 - FARM - TAXABLE: FULL - FT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - IV</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - IV">' + (feature.properties['2024 - INDUSTRIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - IV'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - IV']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - SMALL BUSINESS - I8</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - SMALL BUSINESS - I8">' + (feature.properties['2024 - INDUSTRIAL - SMALL BUSINESS - I8'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - SMALL BUSINESS - I8']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7">' + (feature.properties['2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0">' + (feature.properties['2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: FULL - IT</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: FULL - IT">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: FULL - IT'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - TAXABLE: FULL - IT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: VACANT LAND - IX</th>\
-                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: VACANT LAND - IX">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: VACANT LAND - IX'] !== null ? autolinker.link(String(feature.properties['2024 - INDUSTRIAL - TAXABLE: VACANT LAND - IX']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - LANDFILL - PAYMENT IN LIEU: FULL - HF</th>\
-                        <td class="visible-with-data" id="2024 - LANDFILL - PAYMENT IN LIEU: FULL - HF">' + (feature.properties['2024 - LANDFILL - PAYMENT IN LIEU: FULL - HF'] !== null ? autolinker.link(String(feature.properties['2024 - LANDFILL - PAYMENT IN LIEU: FULL - HF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - LANDFILL - TAXABLE: FULL - HT</th>\
-                        <td class="visible-with-data" id="2024 - LANDFILL - TAXABLE: FULL - HT">' + (feature.properties['2024 - LANDFILL - TAXABLE: FULL - HT'] !== null ? autolinker.link(String(feature.properties['2024 - LANDFILL - TAXABLE: FULL - HT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU</th>\
-                        <td class="visible-with-data" id="2024 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU">' + (feature.properties['2024 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU'] !== null ? autolinker.link(String(feature.properties['2024 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - LARGE INDUSTRIAL - TAXABLE: FULL - LT</th>\
-                        <td class="visible-with-data" id="2024 - LARGE INDUSTRIAL - TAXABLE: FULL - LT">' + (feature.properties['2024 - LARGE INDUSTRIAL - TAXABLE: FULL - LT'] !== null ? autolinker.link(String(feature.properties['2024 - LARGE INDUSTRIAL - TAXABLE: FULL - LT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - MANAGED FORESTS - TAXABLE: FULL - TT</th>\
-                        <td class="visible-with-data" id="2024 - MANAGED FORESTS - TAXABLE: FULL - TT">' + (feature.properties['2024 - MANAGED FORESTS - TAXABLE: FULL - TT'] !== null ? autolinker.link(String(feature.properties['2024 - MANAGED FORESTS - TAXABLE: FULL - TT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT</th>\
-                        <td class="visible-with-data" id="2024 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT">' + (feature.properties['2024 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT'] !== null ? autolinker.link(String(feature.properties['2024 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - Municipal taxes</th>\
-                        <td class="visible-with-data" id="2024 - Municipal taxes">' + (feature.properties['2024 - Municipal taxes'] !== null ? autolinker.link(String(feature.properties['2024 - Municipal taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT</th>\
-                        <td class="visible-with-data" id="2024 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT">' + (feature.properties['2024 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT'] !== null ? autolinker.link(String(feature.properties['2024 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF</th>\
-                        <td class="visible-with-data" id="2024 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF">' + (feature.properties['2024 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF'] !== null ? autolinker.link(String(feature.properties['2024 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU</th>\
-                        <td class="visible-with-data" id="2024 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU">' + (feature.properties['2024 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU'] !== null ? autolinker.link(String(feature.properties['2024 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - OFFICE BUILDING - TAXABLE: FULL - DT</th>\
-                        <td class="visible-with-data" id="2024 - OFFICE BUILDING - TAXABLE: FULL - DT">' + (feature.properties['2024 - OFFICE BUILDING - TAXABLE: FULL - DT'] !== null ? autolinker.link(String(feature.properties['2024 - OFFICE BUILDING - TAXABLE: FULL - DT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - Other taxes</th>\
-                        <td class="visible-with-data" id="2024 - Other taxes">' + (feature.properties['2024 - Other taxes'] !== null ? autolinker.link(String(feature.properties['2024 - Other taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - PARKING LOT - TAXABLE: FULL - GT</th>\
-                        <td class="visible-with-data" id="2024 - PARKING LOT - TAXABLE: FULL - GT">' + (feature.properties['2024 - PARKING LOT - TAXABLE: FULL - GT'] !== null ? autolinker.link(String(feature.properties['2024 - PARKING LOT - TAXABLE: FULL - GT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT</th>\
-                        <td class="visible-with-data" id="2024 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT">' + (feature.properties['2024 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT'] !== null ? autolinker.link(String(feature.properties['2024 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF</th>\
-                        <td class="visible-with-data" id="2024 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF">' + (feature.properties['2024 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF'] !== null ? autolinker.link(String(feature.properties['2024 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD</th>\
-                        <td class="visible-with-data" id="2024 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD">' + (feature.properties['2024 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD'] !== null ? autolinker.link(String(feature.properties['2024 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - RESIDENTIAL - TAXABLE: FULL - RT</th>\
-                        <td class="visible-with-data" id="2024 - RESIDENTIAL - TAXABLE: FULL - RT">' + (feature.properties['2024 - RESIDENTIAL - TAXABLE: FULL - RT'] !== null ? autolinker.link(String(feature.properties['2024 - RESIDENTIAL - TAXABLE: FULL - RT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU</th>\
-                        <td class="visible-with-data" id="2024 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU">' + (feature.properties['2024 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU'] !== null ? autolinker.link(String(feature.properties['2024 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - SHOPPING CENTRE - TAXABLE: FULL - ST</th>\
-                        <td class="visible-with-data" id="2024 - SHOPPING CENTRE - TAXABLE: FULL - ST">' + (feature.properties['2024 - SHOPPING CENTRE - TAXABLE: FULL - ST'] !== null ? autolinker.link(String(feature.properties['2024 - SHOPPING CENTRE - TAXABLE: FULL - ST']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - Solid waste fees</th>\
-                        <td class="visible-with-data" id="2024 - Solid waste fees">' + (feature.properties['2024 - Solid waste fees'] !== null ? autolinker.link(String(feature.properties['2024 - Solid waste fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - Stormwater fees</th>\
-                        <td class="visible-with-data" id="2024 - Stormwater fees">' + (feature.properties['2024 - Stormwater fees'] !== null ? autolinker.link(String(feature.properties['2024 - Stormwater fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - Total assessed value</th>\
-                        <td class="visible-with-data" id="2024 - Total assessed value">' + (feature.properties['2024 - Total assessed value'] !== null ? autolinker.link(String(feature.properties['2024 - Total assessed value']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">2024 - Total taxes levied</th>\
-                        <td class="visible-with-data" id="2024 - Total taxes levied">' + (feature.properties['2024 - Total taxes levied'] !== null ? autolinker.link(String(feature.properties['2024 - Total taxes levied']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">EXTRACTED_ADDRESS_SUMMARY</th>\
-                        <td class="visible-with-data" id="EXTRACTED_ADDRESS_SUMMARY">' + (feature.properties['EXTRACTED_ADDRESS_SUMMARY'] !== null ? autolinker.link(String(feature.properties['EXTRACTED_ADDRESS_SUMMARY']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+			        <tr>\
+                        <td colspan="2"><h2>' + (feature.properties['EXTRACTED_ADDRESS_SUMMARY'] !== null ? autolinker.link(String(feature.properties['EXTRACTED_ADDRESS_SUMMARY']).replace(/'/g, '\'').toLocaleString()) : '') + '</h2></td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">EXTRACTED_ASSESSMENT_ROLL_NUMBER</th>\
+                        <th scope="row">Assessment Roll No</th>\
                         <td class="visible-with-data" id="EXTRACTED_ASSESSMENT_ROLL_NUMBER">' + (feature.properties['EXTRACTED_ASSESSMENT_ROLL_NUMBER'] !== null ? autolinker.link(String(feature.properties['EXTRACTED_ASSESSMENT_ROLL_NUMBER']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">None - Education taxes</th>\
-                        <td class="visible-with-data" id="None - Education taxes">' + (feature.properties['None - Education taxes'] !== null ? autolinker.link(String(feature.properties['None - Education taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">None - Municipal taxes</th>\
-                        <td class="visible-with-data" id="None - Municipal taxes">' + (feature.properties['None - Municipal taxes'] !== null ? autolinker.link(String(feature.properties['None - Municipal taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">None - Other taxes</th>\
-                        <td class="visible-with-data" id="None - Other taxes">' + (feature.properties['None - Other taxes'] !== null ? autolinker.link(String(feature.properties['None - Other taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">None - RESIDENTIAL - TAXABLE: FULL - RT</th>\
-                        <td class="visible-with-data" id="None - RESIDENTIAL - TAXABLE: FULL - RT">' + (feature.properties['None - RESIDENTIAL - TAXABLE: FULL - RT'] !== null ? autolinker.link(String(feature.properties['None - RESIDENTIAL - TAXABLE: FULL - RT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">None - Solid waste fees</th>\
-                        <td class="visible-with-data" id="None - Solid waste fees">' + (feature.properties['None - Solid waste fees'] !== null ? autolinker.link(String(feature.properties['None - Solid waste fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">None - Stormwater fees</th>\
-                        <td class="visible-with-data" id="None - Stormwater fees">' + (feature.properties['None - Stormwater fees'] !== null ? autolinker.link(String(feature.properties['None - Stormwater fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">None - Total assessed value</th>\
-                        <td class="visible-with-data" id="None - Total assessed value">' + (feature.properties['None - Total assessed value'] !== null ? autolinker.link(String(feature.properties['None - Total assessed value']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">None - Total taxes levied</th>\
-                        <td class="visible-with-data" id="None - Total taxes levied">' + (feature.properties['None - Total taxes levied'] !== null ? autolinker.link(String(feature.properties['None - Total taxes levied']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">Number of addresses</th>\
+                        <th scope="row">Addresses within parcel <i class="fas fa-info-circle" title="Multiple roll numbers indicates multiple units, buildings, or owners on one parcel. All subsequent data are aggregated at the parcel level."></i></th>\
                         <td class="visible-with-data" id="Number of addresses">' + (feature.properties['Number of addresses'] !== null ? autolinker.link(String(feature.properties['Number of addresses']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">ZONE_MAIN</th>\
+                        <th scope="row"><a href ="https://ottawa.ca/en/living-ottawa/laws-licences-and-permits/laws/laws-z/zoning-law-no-2008-250/zoning-law-2008-250-consolidation" target="_blank">Zoning Code</a></th>\
                         <td class="visible-with-data" id="ZONE_MAIN">' + (feature.properties['ZONE_MAIN'] !== null ? autolinker.link(String(feature.properties['ZONE_MAIN']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">WARD</th>\
-                        <td class="visible-with-data" id="WARD">' + (feature.properties['WARD'] !== null ? autolinker.link(String(feature.properties['WARD']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">Parcel area (m<sup>2</sup>)</th>\
+                        <td class="visible-with-data" id="PARAREA_M">' + (feature.properties['PARAREA_M'] !== null ? autolinker.link(String(feature.properties['PARAREA_M']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">2023 Municipal Tax by Hectare</th>\
-                        <td class="visible-with-data" id="2023 Municipal Tax by Hectare">' + (feature.properties['2023 Municipal Tax by Hectare'] !== null ? autolinker.link(String(feature.properties['2023 Municipal Tax by Hectare']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">2024 - Municipal Taxes / Hectare <i class="fas fa-info-circle" title="Municipal taxes are only the city&apos;s portion of the total property tax bill. They exclude education taxes and other charges, which vary by property class."></i></th>\
+                        <td class="visible-with-data" id="2024 Municipal Tax by Hectare">' + (feature.properties['2024 Municipal Tax by Hectare'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 Municipal Tax by Hectare']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+					<td colspan="2"><hr></td>\
+                    <tr>\
+                        <th scope="row">None - RESIDENTIAL - TAXABLE: FULL - RT</th>\
+                        <td class="visible-with-data" id="None - RESIDENTIAL - TAXABLE: FULL - RT">' + (feature.properties['None - RESIDENTIAL - TAXABLE: FULL - RT'] !== null ? autolinker.link(formatCurrency(feature.properties['None - RESIDENTIAL - TAXABLE: FULL - RT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">2024 Municipal Tax by Hectare</th>\
-                        <td class="visible-with-data" id="2024 Municipal Tax by Hectare">' + (feature.properties['2024 Municipal Tax by Hectare'] !== null ? autolinker.link(String(feature.properties['2024 Municipal Tax by Hectare']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">2024 - - C0</th>\
+                        <td class="visible-with-data" id="2024 - - C0">' + (feature.properties['2024 - - C0'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - - C0']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">dist_pole</th>\
-                        <td class="visible-with-data" id="dist_pole">' + (feature.properties['dist_pole'] !== null ? autolinker.link(String(feature.properties['dist_pole']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">2024 - - DH</th>\
+                        <td class="visible-with-data" id="2024 - - DH">' + (feature.properties['2024 - - DH'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - - DH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF">' + (feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL - CF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV">' + (feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - CV']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY">' + (feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - PAYMENT IN LIEU: FULL, VACANT LAND - CY']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - SMALL BUSINESS - C8</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - SMALL BUSINESS - C8">' + (feature.properties['2024 - COMMERCIAL - SMALL BUSINESS - C8'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - SMALL BUSINESS - C8']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7">' + (feature.properties['2024 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - SMALL SCALE ON FARM BUSINESS - C7']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - TAXABLE: EXCESS LAND - CU</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: EXCESS LAND - CU">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: EXCESS LAND - CU'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - TAXABLE: EXCESS LAND - CU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - TAXABLE: FARMLAND AWAITING DEVELOPMENT PHASE I - C1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - TAXABLE: FULL - CT</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: FULL - CT">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: FULL - CT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - TAXABLE: FULL - CT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - CH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - COMMERCIAL - TAXABLE: VACANT LAND - CX</th>\
+                        <td class="visible-with-data" id="2024 - COMMERCIAL - TAXABLE: VACANT LAND - CX">' + (feature.properties['2024 - COMMERCIAL - TAXABLE: VACANT LAND - CX'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - COMMERCIAL - TAXABLE: VACANT LAND - CX']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - EXEMPT - E</th>\
+                        <td class="visible-with-data" id="2024 - EXEMPT - E">' + (feature.properties['2024 - EXEMPT - E'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - EXEMPT - E']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - FARM - TAXABLE: FULL - FT</th>\
+                        <td class="visible-with-data" id="2024 - FARM - TAXABLE: FULL - FT">' + (feature.properties['2024 - FARM - TAXABLE: FULL - FT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - FARM - TAXABLE: FULL - FT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - IV</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - IV">' + (feature.properties['2024 - INDUSTRIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - IV'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - PAYMENT IN LIEU: FULL, EXCESS LAND - IV']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - SMALL BUSINESS - I8</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - SMALL BUSINESS - I8">' + (feature.properties['2024 - INDUSTRIAL - SMALL BUSINESS - I8'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - SMALL BUSINESS - I8']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7">' + (feature.properties['2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 1 - I7']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0">' + (feature.properties['2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - SMALL SCALE ON FARM BUSINESS 2 - I0']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - TAXABLE: EXCESS LAND - IU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - TAXABLE: EXCESS LAND, SHARED PAYMENT IN LIEU - IK']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: FULL - IT</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: FULL - IT">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: FULL - IT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - TAXABLE: FULL - IT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - TAXABLE: FULL, SHARED PAYMENT IN LIEU - IH']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - INDUSTRIAL - TAXABLE: VACANT LAND - IX</th>\
+                        <td class="visible-with-data" id="2024 - INDUSTRIAL - TAXABLE: VACANT LAND - IX">' + (feature.properties['2024 - INDUSTRIAL - TAXABLE: VACANT LAND - IX'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - INDUSTRIAL - TAXABLE: VACANT LAND - IX']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - LANDFILL - PAYMENT IN LIEU: FULL - HF</th>\
+                        <td class="visible-with-data" id="2024 - LANDFILL - PAYMENT IN LIEU: FULL - HF">' + (feature.properties['2024 - LANDFILL - PAYMENT IN LIEU: FULL - HF'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - LANDFILL - PAYMENT IN LIEU: FULL - HF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - LANDFILL - TAXABLE: FULL - HT</th>\
+                        <td class="visible-with-data" id="2024 - LANDFILL - TAXABLE: FULL - HT">' + (feature.properties['2024 - LANDFILL - TAXABLE: FULL - HT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - LANDFILL - TAXABLE: FULL - HT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU</th>\
+                        <td class="visible-with-data" id="2024 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU">' + (feature.properties['2024 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - LARGE INDUSTRIAL - TAXABLE: EXCESS LAND - LU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - LARGE INDUSTRIAL - TAXABLE: FULL - LT</th>\
+                        <td class="visible-with-data" id="2024 - LARGE INDUSTRIAL - TAXABLE: FULL - LT">' + (feature.properties['2024 - LARGE INDUSTRIAL - TAXABLE: FULL - LT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - LARGE INDUSTRIAL - TAXABLE: FULL - LT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - MANAGED FORESTS - TAXABLE: FULL - TT</th>\
+                        <td class="visible-with-data" id="2024 - MANAGED FORESTS - TAXABLE: FULL - TT">' + (feature.properties['2024 - MANAGED FORESTS - TAXABLE: FULL - TT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - MANAGED FORESTS - TAXABLE: FULL - TT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT</th>\
+                        <td class="visible-with-data" id="2024 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT">' + (feature.properties['2024 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - MULTI-RESIDENTIAL - TAXABLE: FULL - MT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT</th>\
+                        <td class="visible-with-data" id="2024 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT">' + (feature.properties['2024 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - NEW MULTI-RESIDENTIAL - TAXABLE: FULL - NT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF</th>\
+                        <td class="visible-with-data" id="2024 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF">' + (feature.properties['2024 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - OFFICE BUILDING - PAYMENT IN LIEU: FULL - DF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU</th>\
+                        <td class="visible-with-data" id="2024 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU">' + (feature.properties['2024 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - OFFICE BUILDING - TAXABLE: EXCESS LAND - DU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - OFFICE BUILDING - TAXABLE: FULL - DT</th>\
+                        <td class="visible-with-data" id="2024 - OFFICE BUILDING - TAXABLE: FULL - DT">' + (feature.properties['2024 - OFFICE BUILDING - TAXABLE: FULL - DT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - OFFICE BUILDING - TAXABLE: FULL - DT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - PARKING LOT - TAXABLE: FULL - GT</th>\
+                        <td class="visible-with-data" id="2024 - PARKING LOT - TAXABLE: FULL - GT">' + (feature.properties['2024 - PARKING LOT - TAXABLE: FULL - GT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - PARKING LOT - TAXABLE: FULL - GT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT</th>\
+                        <td class="visible-with-data" id="2024 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT">' + (feature.properties['2024 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - PROFESSIONAL SPORTS FACILITY - TAXABLE: FULL - QT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF</th>\
+                        <td class="visible-with-data" id="2024 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF">' + (feature.properties['2024 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - RESIDENTIAL - PAYMENT IN LIEU: FULL - RF']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD</th>\
+                        <td class="visible-with-data" id="2024 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD">' + (feature.properties['2024 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - RESIDENTIAL - TAXABLE: EDUCATION ONLY - RD']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - RESIDENTIAL - TAXABLE: FULL - RT</th>\
+                        <td class="visible-with-data" id="2024 - RESIDENTIAL - TAXABLE: FULL - RT">' + (feature.properties['2024 - RESIDENTIAL - TAXABLE: FULL - RT'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - RESIDENTIAL - TAXABLE: FULL - RT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU</th>\
+                        <td class="visible-with-data" id="2024 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU">' + (feature.properties['2024 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - SHOPPING CENTRE - TAXABLE: EXCESS LAND - SU']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - SHOPPING CENTRE - TAXABLE: FULL - ST</th>\
+                        <td class="visible-with-data" id="2024 - SHOPPING CENTRE - TAXABLE: FULL - ST">' + (feature.properties['2024 - SHOPPING CENTRE - TAXABLE: FULL - ST'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - SHOPPING CENTRE - TAXABLE: FULL - ST']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - Total assessed value</th>\
+                        <td class="visible-with-data" id="2024 - Total assessed value">' + (feature.properties['2024 - Total assessed value'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - Total assessed value']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">None - Total assessed value</th>\
+                        <td class="visible-with-data" id="None - Total assessed value">' + (feature.properties['None - Total assessed value'] !== null ? autolinker.link(formatCurrency(feature.properties['None - Total assessed value']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+					<td colspan="2"><hr></td>\
+                    <tr>\
+                        <th scope="row">2024 - Municipal taxes</th>\
+                        <td class="visible-with-data" id="2024 - Municipal taxes">' + (feature.properties['2024 - Municipal taxes'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - Municipal taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - Education taxes</th>\
+                        <td class="visible-with-data" id="2024 - Education taxes">' + (feature.properties['2024 - Education taxes'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - Education taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - Solid waste fees</th>\
+                        <td class="visible-with-data" id="2024 - Solid waste fees">' + (feature.properties['2024 - Solid waste fees'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - Solid waste fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - Stormwater fees</th>\
+                        <td class="visible-with-data" id="2024 - Stormwater fees">' + (feature.properties['2024 - Stormwater fees'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - Stormwater fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - Other taxes</th>\
+                        <td class="visible-with-data" id="2024 - Other taxes">' + (feature.properties['2024 - Other taxes'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - Other taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">2024 - Total taxes levied</th>\
+                        <td class="visible-with-data" id="2024 - Total taxes levied">' + (feature.properties['2024 - Total taxes levied'] !== null ? autolinker.link(formatCurrency(feature.properties['2024 - Total taxes levied']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">None - Municipal taxes</th>\
+                        <td class="visible-with-data" id="None - Municipal taxes">' + (feature.properties['None - Municipal taxes'] !== null ? autolinker.link(formatCurrency(feature.properties['None - Municipal taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">None - Education taxes</th>\
+                        <td class="visible-with-data" id="None - Education taxes">' + (feature.properties['None - Education taxes'] !== null ? autolinker.link(formatCurrency(feature.properties['None - Education taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">None - Solid waste fees</th>\
+                        <td class="visible-with-data" id="None - Solid waste fees">' + (feature.properties['None - Solid waste fees'] !== null ? autolinker.link(formatCurrency(feature.properties['None - Solid waste fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">None - Stormwater fees</th>\
+                        <td class="visible-with-data" id="None - Stormwater fees">' + (feature.properties['None - Stormwater fees'] !== null ? autolinker.link(formatCurrency(feature.properties['None - Stormwater fees']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">None - Other taxes</th>\
+                        <td class="visible-with-data" id="None - Other taxes">' + (feature.properties['None - Other taxes'] !== null ? autolinker.link(formatCurrency(feature.properties['None - Other taxes']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">None - Total taxes levied</th>\
+                        <td class="visible-with-data" id="None - Total taxes levied">' + (feature.properties['None - Total taxes levied'] !== null ? autolinker.link(formatCurrency(feature.properties['None - Total taxes levied']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -695,10 +501,10 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var overlaysTree = [
-            {label: 'Buffered_Revenue by Parcel - points_West Carleton-March<br /><table><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_0560390.png" /></td><td>0 - 56,039</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_56039884431.png" /></td><td>56,039 - 88,443</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_884431196852.png" /></td><td>88,443 - 119,685</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_1196851632963.png" /></td><td>119,685 - 163,296</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_163296157311174.png" /></td><td>163,296 - 15,731,117</td></tr></table>', layer: layer_Buffered_RevenuebyParcelpoints_WestCarletonMarch_3},
+            {label: '2024 Municipal Taxes by Hectare<br /><table><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_0560390.png" /></td><td>0 - 56,039</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_56039884431.png" /></td><td>56,039 - 88,443</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_884431196852.png" /></td><td>88,443 - 119,685</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_1196851632963.png" /></td><td>119,685 - 163,296</td></tr><tr><td style="text-align: center;"><img src="legend/Buffered_RevenuebyParcelpoints_WestCarletonMarch_3_163296157311174.png" /></td><td>163,296 - 15,731,117</td></tr></table>', layer: layer_Buffered_RevenuebyParcelpoints_WestCarletonMarch_3},
             {label: "Google Satellite", layer: layer_GoogleSatellite_2, radioGroup: 'bm' },
-            {label: "Positron", layer: layer_Positron_1, radioGroup: 'bm' },
-            {label: "Dark Matter", layer: layer_DarkMatter_0, radioGroup: 'bm' },]
+            {label: "Light Theme", layer: layer_Positron_1, radioGroup: 'bm' },
+            {label: "Dark Theme", layer: layer_DarkMatter_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
